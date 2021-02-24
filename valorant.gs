@@ -48,7 +48,8 @@ function resetScores() {
 }
 
 function swapSides() {
-  
+  var response = ui.alert("Switch Sides", "Are you sure you want to switch sides? There is no going back...", ui.ButtonSet.YES_NO);
+  if(response == ui.Button.YES) {
   let team2 = s.getRange(location.team2Name);
   let team1 = s.getRange(location.team1Name);
   let t2Name = team2.getValue();
@@ -64,6 +65,7 @@ function swapSides() {
   
   s.getRange(location.team1Name).setValue(t2Name);
   s.getRange(location.team2Name).setValue(t1Name);
-  
-  
+  } else {
+    return;
+  } 
 }
