@@ -48,13 +48,22 @@ function resetScores() {
 }
 
 function swapSides() {
-  let team1 = s.getRange(location.team1Name).getValue();
-  let score1 = s.getRange(location.team1Score).getValue();
-  let team2 = s.getRange(location.team2Name).getValue();
-  let score2 = s.getRange(location.team2Score).getValue();
+  
+  let team2 = s.getRange(location.team2Name);
+  let team1 = s.getRange(location.team1Name);
+  let t2Name = team2.getValue();
+  let t1Name = team1.getValue();
 
-  s.getRange(location.team1Name).
-  s.getRange(location.team2Name).moveTo(team1);
+  let score2 = s.getRange(location.team2Score);
+  let score1 = s.getRange(location.team1Score);
+  let t2Score = parseInt(score2.getValue());
+  let t1Score = parseInt(score1.getValue());
 
+  s.getRange(location.team2Score).setValue(t1Score);
+  s.getRange(location.team1Score).setValue(t2Score);
+  
+  s.getRange(location.team1Name).setValue(t2Name);
+  s.getRange(location.team2Name).setValue(t1Name);
+  
   
 }
